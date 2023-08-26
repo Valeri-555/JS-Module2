@@ -40,38 +40,48 @@
 // Ми звертаємось до глобального т/д Array, звернення завжди пишемо з великої літери
 //console.log(Array.isArray('hello')); //- false
 
-//const firstEl = array[0]; // щоб дізнатись І елемент масиву, через змшнну 
+const firstEl = array[0]; // щоб дізнатись І елемент масиву, через змшнну 
 //console.log(firstEl); // - Hello world
 //console.log(array.length); // - 4 шукаємо останній порядковий номер масиву через ленгс
-//const lastEl = array[array.length -1]; //Щоб дізнатись останній елемент масиву, від порядковог номеру віднімаємо -1, так як індекс чісла < за порядковий
+const lastEl = array[array.length -1]; //Щоб дізнатись останній елемент масиву, від порядковог номеру віднімаємо -1, так як індекс чісла < за порядковий
 //console.log(lastEl);// 15
 //const lastIDX = array.length - 1; //коли треба дізнатис індекс останнього елемента
 //console.log(lastIDX);//3
 
 
 
-
-const array = ["Hello world", null, true, 15];
+// FOR Використовуємо якщо нам якимось чином порібно мутувати данний масив, тобто нам потрібен доступ до індекса, за рахунок чого в нас є лічильнік
+//const array = ["Hello world", null, true, 15];
 //і - це лічильник який співвідносимо до індексу масиву
-for (let i = 0; i < array.length; i+=1){
-    const item = array[i]
-    console.log(item);
-}
-
-
-// for(const item of array){
+// for (let i = 0; i < array.length; i+=1){ 
+//     const item = array[i]
 //     console.log(item);
 // }
 
 
 
-// const array = [null, true, "Hello world", 15, undefined, 'ok'];
+//FOR OF Використовуємо коли нам потрібно перебоати данний елемент, 
+// але ніяким чином не впливати на структуру данного масиву, 
+// тобто ми не маємо з нього щось вирізати та в нього додавати ми лише його перебираємо і опрацьовуємо кожен елемент на ітерації
+//const array = ["Hello world", null, true, 15];
+// for(const item of array){  // створюємо змінну за допомогою якої ми будемо звертатись до елемента нашого масиву
+    // console.log(item);
+ //}
+// const item - ми беремо елемент
+// of - з (чого?)
+// array -  з масиву
 
-// for (let i = 0; i < array.length; i += 1) {
-//     if (typeof array[i] === 'string') {
-//         array[i] = false;
-//     }
+
+// Можемо змінювати елемети в середині масиву
+//const array = [null, true, "Hello world", 15, undefined, 'ok'];
+//array[0] = 2;
+// console.log(array);
+//  for (let i = 0; i < array.length; i += 1) {
+//      if (typeof array[i] === 'string') {
+//          array[i] = false;
+//      }
 // }
+// console.log(array);
 
 // for (let item of array) {
 //     if (typeof item === 'string') {
@@ -83,70 +93,73 @@ for (let i = 0; i < array.length; i+=1){
 
 
 
-// Примітивні типи даних - за значенням
+
+// * * *   Примітивні типи даних - за значенням
 // console.log(1 === 1);
 // console.log([1] === [1]);
 
 
 // let a = 15;
-// let b = a;
-
+// let b = a; //(a та b - ідентефікатори)
 // b += 1;
-
 // console.log(a);
 // console.log(b);
-// console.log(a === b);
+// console.log(a === b); - false
 
 
 
 
-// Складні типи даних - за посиланням
+// * * * * * Складні типи даних - за посиланням
 // let a = [1,2,3];
 // let b = a;
 
-// b.push(4)
+// b.push(4) // додаємо один або декільеа елементів в кінець масиву
 
 
 // console.log('a',a);
 // console.log('b',b);
 
-// console.log(a === b);
+// console.log(a === b); //true
 
 
 
 
 
-// push pop
+// PUSH POP - використовуємо для того щоб видалити останній елемент масиву, і він його повертає в якості свого виконання
 // const numbers = [1, 2, 3];
-// // numbers.push(4);
-// const result = numbers.pop();
+// numbers.push(4); //
+//numbers.pop(); - викликаємо стільки разів, скільки потрібно видалити, на кожен елемент,
+// const result = numbers.pop(); // а також може повернути вирізаний елемент
 // console.log(result);
 // console.log(numbers);
 
 
-// unshift shift
+// UNSHIFT (додає елемент на початок масиву)   shift (вирізає перший елемент масиву)
+//const numbers = [1, 2, 3];
+//numbers.unshift(4,5,6) // [4, 5, 6, 1, 2, 3]
+//const result = numbers.shift(); - //вирізав 1 з масиву
+//console.log(result);
+//console.log(numbers);
 
-// const numbers = [1, 2, 3];
-// numbers.unshift(4,5,6)
-// const result = numbers.shift();
-// console.log(result);
-// console.log(numbers);
-
-
-
+// Методи shift i pop мутують масив, змінюють початковий вигляд масиву
 
 
-//slice
+
+
+// SLICE (використовуємо щоб вирізато одразу певну кількість елементів, повертає копію в результаті свого виконання)
+
+//const numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+//const result = numbers.slice(2, 5); // передаємо ДО якого індексу потрібно вирізати не включаючи його
+//console.log(result);
+//console.log(numbers);
+
+
+
+
+// SPLICE (може вирізати елемент масиву, замінити ел.мас та додати будь-куди в елемент масиву, мутуючий медот
+//(приймає 2 параметри які йдуть обов'язкові)
 // const numbers = [1, 2, 3, 4, 5, 6, 7, 8];
-// const result = numbers.slice(2, 5);
-// console.log(result);
-// console.log(numbers);
-
-// splice
-
-
-// const numbers = [1, 2, 3, 4, 5, 6, 7, 8];
-// const result = numbers.splice(2,2)
+// const result = numbers.splice(2,2) - параметр, з індексу якого елементу потрібно починати;   
 // console.log(result);
 // console.log(numbers);
 
