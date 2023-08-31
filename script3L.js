@@ -299,8 +299,8 @@
 // Напиши скрипт, який «розгортає» рядок (зворотний порядок літер) і виводить його в консоль.
 
 // const string = 'Welcome to the future';
-// const SEPARATOR = '';
-// const result = string.split(SEPARATOR).reverse().join(SEPARATOR)
+// const SEPARATOR = ''; // розділяє кожну літеру окремо, якщо лапкі з пробілом ' ' - розділення по пробілам (кожне слово окремо)
+// const result = string.split(SEPARATOR).reverse().join(SEPARATOR) // reverse - щоб з кінця літери поставити на початок, join - об'єднати в рядок
 // console.log(result);
 
 
@@ -309,16 +309,17 @@
 // Task-5
 // Напиши скрипт який буде перевіряти чи елементи в масиві розташовані в порядку зростання,
 // якщо ні то замінювати елемент на вірнi
-// const numbers = [1, 2, 3, 1, 5, 6, 1, 1, 9]
-
-// for (let i = 1; i < numbers.length; i += 1) {
+ //const numbers = [1, 2, 3, 1, 5, 6, 1, 1, 9]
+// for (let i = 1; i < numbers.length; i += 1) { тому що другий елемент має бути більшим за перший елемент, тому і=1;
 //     const currentEl = numbers[i];
 //     const prevEl = numbers[i - 1];
-//     if (currentEl - prevEl !== 1) {
+//     if (currentEl - prevEl !== 1) { якщо той елемент який перебираю мінус попередній елемент
 //         numbers[i] = numbers[i - 1] + 1;
 //     }
 // }
 // console.log(numbers);
+
+
 
 
 // Task-6
@@ -347,7 +348,7 @@
 //         case 3:
 //             message = `${arr[0]}, ${arr[1]} and ${arr[2]} like this`
 //             break;
-//         default:
+//         default: //або більше
 //             message = `${arr[0]}, ${arr[1]} and ${arr.length - 2} others like this`
 //     }
 //     return message;
