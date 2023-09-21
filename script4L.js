@@ -81,20 +81,14 @@
 
 // Області видимості, присвоєння за посиланням та значенням
 
+
 // // Example 1
+
 // let someValue = 4;
-
-// if (true) {
-//     someValue = 11;
+// if (true) { // if умова, яка повертає true, відповідно if одразу справджується
+//     someValue = 11; // заходимо в тіло і звертаємось до змінної someValue перевизначаючи її знвчення, без оголошення
 // }
-
 // console.log(someValue);
-
-
-
-
-
-
 
 
 
@@ -103,14 +97,12 @@
 
 
 // // Example 2
-// let someValue = 4;
 
-// if (true) {
-//     let someValue = 11;
+// let someValue = 4; // створилась змінна з ідентифікатором someValue та прісвоїлось значення 4
+// if (true) { //іф одразу справджується
+//     let someValue = 11; // в тілі іф ми не заертаємось зо змінної як в попередньому випадку, ми її оголошуємо в іншій обоасті видимості
 // }
-
 // console.log(someValue);
-
 
 
 
@@ -120,20 +112,15 @@
 
 
 //// Example 3
-// let someValue = 4;
 
-// if (true) {
-//     if (true) {
-//         someValue = 24;
-//     }
-//     let someValue = 11;
-// }
-
-// console.log(someValue);
-
-
-
-
+//let someValue = 4; //створили змінну з ідентифікатором someValue та прісвоїли значення 4;
+// if (true) { // іф що одразу стверджкється,
+    //if (true) { //в тілі іф  створений ще один іф, йдемо ще нижче
+        // someValue = 24; // звертаємось до змінної що створ вище через лет, йдемо на крок вище до if(true)
+//    }
+//    let someValue = 11; // він нас повертає до нової проголошеної змінної let someValue = 11, але через те, що вона не ініциалізована повертає помилку
+//}
+//console.log(someValue); // Error
 
 
 
@@ -143,30 +130,28 @@
 
 
 // // Example 4
-// let someValue = 2;
 
-
-// function checkScope(someValue) { // let someValue = 2
+// let someValue = 2; // 1. оголосили змінну присвоїли значення 2
+// function checkScope(someValue) { // 3. коли оголошуємо параметр, ми умовно створюємо змінну let someValue = 2 в данній області видимості
 //     someValue = 45;
 //     return someValue;
 // }
-
-// checkScope(someValue)
-
+// checkScope(someValue) // 2. викликаємо функцію куди передаємо  значення 2. Тобто ми звертаємось до локальної змінної (function checkScope(someValue), а не до глобальної (let someValue = 2)
 // console.log(someValue);
 
 
+
+
+
+
 // Example 5
-// let someValue = 2;
 
-
-// function checkScope() {
-//     someValue = 45;
+// let someValue = 2;  // 1. оголосили змінну
+// function checkScope() { // 3. оголосили функію. змінна вункції не приймає жодного параметру
+//     someValue = 45; // 4. шукаємо в своїй області видимості, якщо немає, робимо крок на зовні
 //     return someValue;
 // }
-
-// checkScope(someValue)
-
+// checkScope(someValue) // 2. викликали функцію
 // console.log(someValue);
 
 
@@ -193,33 +178,27 @@
 
 
 // Example 7
-// let someArray = ['Hello', 'my', 'name', 'scope'];
 
-
-// function checkScope(arr) { // let arr = someArray;
+// let someArray = ['Hello', 'my', 'name', 'scope']; // складний тип данних, робимо присвоєння за посиланням (значення присвоєні до однієї і тієї ж комірочки)
+// function checkScope(arr) { // до arr присвоюємо значення яке прописане в someArray let arr = someArray;
 //     arr.splice(0,3)
 // }
-
 // checkScope(someArray)
-
 // console.log(someArray);
 
+
+
 // let someArray = ['Hello', 'my', 'name', 'scope'];
-
-
 // function checkScope(arr) { // let arr = someArray;
-//     arr = Array.from(arr)
-//     arr.splice(0,3)
+//     arr = Array.from(arr) // з попереднього значення створи мені новий масив, а не ту саму комірочку пам'яті, тобто створює та переносить в нову комірку пам'яті
+//     arr.splice(0,3) //  коли ми видаляли, то видаляли з нової комірочки а не з оригінальної
 // }
-
 // checkScope(someArray)
-
 // console.log(someArray);
 
 
 
 // const name = 10;
-
 // if (true) {
 //     const name = 15;
 //     console.log('block', name);
@@ -281,13 +260,14 @@
 // 2 - Число яке потрібно порівнювати з усіма елементами масиву.
 // Функція повертає повідомлення про успішну або не успішну перевірку (повідомлення "Success ✅" "Fail ❌")
 
+
 // const numbers = [25, 12, 67, 40, 18];
 // Застосування функції
 
 // function checkValue(arr, target) {
 //     let message = "Success ✅";
 
-//     for (const num of arr) {
+//     for (const num of arr) { // якщо ми нічого не видаляємо та не перевизначаємо застосовуємо for
 //         if (target > num) {
 //             message = "Fail ❌";
 //         }
@@ -306,7 +286,6 @@
 // Застосування функції + патерн раннє повернення
 
 // const numbers = [25, 12, 67, 40, 18];
-
 // function checkValue(arr, target) {
 //     for (const num of arr) {
 //         if (target > num){
@@ -316,10 +295,12 @@
 
 //     return "Success ✅";
 // }
-
 // console.log(checkValue(numbers, 10));
-
 // console.log(checkValue(numbers, 13));
+
+
+
+
 
 
 // Task-2
@@ -334,8 +315,8 @@
 // function getCombination(arr, count) {
 //     const result = [];
 
-//     for (let i = 0; i < arr.length; i += count) {
-//         const combination = arr.slice(i, i + count);
+//     for (let i = 0; i < arr.length; i += count) { // цикл for дає доступ до лічильника
+//         const combination = arr.slice(i, i + count); // переше (і) - з індекса якого елемена потрібо починати, (і + count) до якого елемента нам потрібно вирізати
 //         result.push(combination)
 //     }
 
@@ -344,6 +325,8 @@
 // console.log(getCombination(data, 2));
 // console.log(getCombination(data, 3));
 // console.log(getCombination(data, 1));
+
+
 
 // Example 3 - Площа прямокутника
 // Напиши функцію getRectArea(dimensions) для обчислення площі прямокутника зі сторонами, значення яких будуть передані до параметра dimensions у вигляді рядка. Значення гарантовано розділені пробілом.
@@ -358,6 +341,11 @@
 
 // console.log(getRectArea('8 11'));
 // console.log(getRectArea('15 11'));
+
+
+
+
+
 // Task-4
 // Напишіть функції для роботи з колекцією навчальних курсів courses:
 
@@ -366,39 +354,41 @@
 // updateCourse(oldName, newName) - змінює ім'я на нове
 // const courses = ['HTML', 'CSS', 'JavaScript', 'React', 'PostgreSQL'];
 
+
 // function addCourse(name) {
-//     if (courses.includes(name)) {
+//     if (courses.includes(name)) {  //перевіряє чи входить курс css в наш список;
 //         return 'Ви вже маєте такий курс';
 //     }
 //     courses.push(name);
 // }
-
-// addCourse('Express');
+// addCourse('Express'); // додає в кінець списку новий курс;
 // console.log(courses); // ['HTML', 'CSS', 'JavaScript', 'React', 'PostgreSQL', 'Express']
 // console.log(addCourse('CSS')); // 'Ви вже маєте такий курс'
 
-// const courses = ['HTML', 'CSS', 'JavaScript', 'React', 'PostgreSQL'];
+______________________________________________
 
+// const courses = ['HTML', 'CSS', 'JavaScript', 'React', 'PostgreSQL'];
 // function removeCourse(name) {
 //     const idx = courses.indexOf(name);
 //     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_NOT
-
+// ~ bitwise not - тільда (тільдове перетворення)
 //     console.log('~', ~-1); // 0
 //     console.log(-(-1 + 1)); // 0
-//     // -(x + 1)
+//     // -(x + 1) - застовується колі нам потрібен пошук по індексу, але перевірити є елемент чи немає
 //     // -1 => true => 0 => false
 //     //  0 => false => -1 true
 //     if (!~idx) {  //idx + 1
 //         console.log(name);
 //         return "Курс із таким ім'ям не знайдено"
 //     }
-
 //     courses.splice(idx, 1)
 // }
 // removeCourse('React');
 // console.log(courses); // ['HTML', 'CSS', 'JavaScript', 'PostgreSQL', 'Express']
 // console.log(removeCourse('Vue')); // 'Курс із таким ім'ям не знайдено'
 
+
+______________________________________________
 
 
 // const courses = ['HTML', 'CSS', 'Express','JavaScript', 'React', 'PostgreSQL'];
@@ -419,3 +409,9 @@
 // // updateCourse('HTML', 'NestJS');
 // console.log(updateCourse('qwerty', 'NestJS'));
 // console.log(courses); // ['HTML', 'CSS', 'JavaScript', 'PostgreSQL', 'NestJS']
+
+
+
+
+
+
